@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "*.scss": "scss",
+    "*.tsx": "typescriptreact",
+    "stdlib.h": "c"
+  }
+}
