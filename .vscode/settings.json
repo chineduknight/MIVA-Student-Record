@@ -2,6 +2,8 @@
   "files.associations": {
     "*.scss": "scss",
     "*.tsx": "typescriptreact",
-    "stdlib.h": "c"
+    "stdlib.h": "c",
+    "string.h": "c",
+    "tinyfiledialogs.h": "c"
   }
 }

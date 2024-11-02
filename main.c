@@ -19,7 +19,17 @@ int main()
 
   while (1)
   {
-    printf("\n1. Add Student\n2. Modify Student\n3. Display All Students\n4. Search Student by Roll Number\n5. Save Records to File\n6. Load Records from File\n7. Calculate Average Marks\n8. Sort Students by Marks\n9. Exit\n");
+    printf("\n1. Add Student");
+    printf("\n2. Modify Student");
+    printf("\n3. Remove Student");
+    printf("\n4. Display All Students");
+    printf("\n5. Search Student by Roll Number");
+    printf("\n6. Save Records to File");
+    printf("\n7. Load Records from File");
+    printf("\n8. Calculate Average Marks");
+    printf("\n9. Sort Students by Marks");
+    printf("\n10. Exit\n");
+
     printf("Enter your choice: ");
     scanf("%d", &choice);
     getchar(); // Consume newline character
@@ -33,24 +43,38 @@ int main()
       modify_student(records, student_count);
       break;
     case 3:
-      display_students(records, student_count);
+      remove_student(&records, &student_count);
       break;
     case 4:
-      search_student(records, student_count);
+      display_students(records, student_count);
       break;
     case 5:
-      save_records_to_file(records, student_count);
+      search_student(records, student_count);
       break;
     case 6:
-      load_records_from_file(&records, &student_count);
+      save_records_to_file(records, student_count);
       break;
     case 7:
-      calculate_average_marks(records, student_count);
+      load_records_from_file(&records, &student_count);
       break;
     case 8:
-      sort_students_by_marks(records, student_count);
+      calculate_average_marks(records, student_count);
       break;
     case 9:
+    {
+      int order;
+      printf("Enter 1 to sort by ascending order or 0 to sort by descending order: ");
+      if (scanf("%d", &order) != 1 || (order != 0 && order != 1))
+      {
+        printf("Invalid choice. Defaulting to descending order.\n");
+        order = 0;
+      }
+      getchar(); // Consume newline character left by scanf
+      sort_students_by_marks(records, student_count, order);
+      display_students(records, student_count);
+      break;
+    }
+    case 10:
       free(records);
       printf("Exiting the Student Record System. Goodbye, %s!\n", user_name);
       return 0;
